@@ -4,6 +4,8 @@
 #### MAKE SURE THESE ARE INSTALLED
 
 # vagrant plugin install vagrant-vbguest
+#
+# USE this on windows !! To speed it up!
 # vagrant plugin install vagrant-winnfsd
 
 # To use Chef
@@ -45,21 +47,22 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Forward the Rails server default port to the host
   config.vm.network :forwarded_port, guest: 3000, host: 3000
-  config.vm.network :forwarded_port, guest: 3000, host: 80
+  #config.vm.network :forwarded_port, guest: 3000, host: 80
   # Guardfile
   config.vm.network :forwarded_port, guest: 4000, host: 4000
 
 
 
 
-  # This project folder
-  config.vm.synced_folder ".", "/vagrant", id: 'vagrant', type: "nfs"
+  # This project folder - NFS for windows is suggested!
+  config.vm.synced_folder ".", "/vagrant", id: 'vagrant' #, type: "nfs"
+   # config.winnfsd.logging = "off"  # Or you will drown in messages!
   # The rest of projects
-  config.vm.synced_folder "C:/Projects", "/projects" ,id: 'projects',  type: "nfs"
+  # config.vm.synced_folder "C:/Projects", "/projects" ,id: 'projects',  type: "nfs"
 
   # Shared settings - later used in the setup file below
-  config.vm.synced_folder "C:/Dropbox/Settings", "/settings" , id: 'settings',  type: "nfs"
-  config.winnfsd.logging = "off"
+  # config.vm.synced_folder "C:/Dropbox/Settings", "/settings" , id: 'settings',  type: "nfs"
+
 
   config.vm.provision :shell, path: "vagrant_config/apt_get_prerequisites.sh"
   #config.vm.provision :shell, path: "vagrant_config/app_specific_commands.sh"
