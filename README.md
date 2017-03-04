@@ -1,5 +1,7 @@
 # vagrant-debian-on-windows-with-rbenv
 
+Read comments  especially in vagrant_config/ & Vagrantfile
+
 ### Author
 Nick Gorbikoff (c) 2014
 nick.gorbikoff@gmail.com
