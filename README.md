@@ -1,6 +1,8 @@
 # vagrant-debian-on-windows-with-rbenv
 
 Read comments  especially in vagrant_config/ & Vagrantfile
+This will work on any host machine  - Mac, Linux or Windows (winnfs is only for windows - just comment it out)
+
 
 ### Author
 Nick Gorbikoff (c) 2014
