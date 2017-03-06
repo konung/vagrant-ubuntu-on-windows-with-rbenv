@@ -94,12 +94,12 @@ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> /home/ubuntu/.bashrc
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> /home/ubuntu/.bash_profile
 echo 'eval "$(rbenv init -)"' >> /home/ubuntu/.bashrc
 echo 'eval "$(rbenv init -)"' >> /home/ubuntu/.bash_profile
-exec $SHELL
+sudo chown  -R ubuntu:ubuntu /home/ubuntu
 
 git clone https://github.com/rbenv/ruby-build.git /home/ubuntu/.rbenv/plugins/ruby-build
 echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> /home/ubuntu/.bashrc
 echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> /home/ubuntu/.bash_profile
-exec $SHELL
+#exec $SHELL
 
 sudo chown  -R ubuntu:ubuntu /home/ubuntu
 
@@ -107,6 +107,8 @@ sudo -H -u ubuntu  /bin/bash -l -c 'rbenv install 2.3.3'
 sudo -H -u ubuntu  /bin/bash -l -c 'rbenv global 2.3.3'
 sudo -H -u ubuntu  /bin/bash -l -c 'ruby -v'
 sudo -H -u ubuntu  /bin/bash -l -c 'gem install bundler'
+
+
 
 
 
@@ -119,6 +121,10 @@ sudo apt-get update
 
 # Install Passenger & Nginx
 sudo apt-get install -y nginx-extras passenger
+
+
+# Run bundle in the project directory
+sudo -H -u ubuntu  /bin/bash -l -c 'cd /vagrant && bundle install'
 
 # Or change in /etc/passwd
 
