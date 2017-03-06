@@ -85,31 +85,30 @@ sudo apt-get install -y nodejs
 
 sudo chmod 700 /home/ubuntu/.ssh
 sudo chmod 700 -R /home/ubuntu/.ssh/
-sudo chown ubuntu:ubuntu ~/ -R
+sudo chown  -R ubuntu:ubuntu /home/ubuntu
 
-# rbenv
-cd
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+# rbenv for ubuntu user
+cd /home/ubuntu/
+git clone https://github.com/rbenv/rbenv.git /home/ubuntu/.rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> /home/ubuntu/.bashrc
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> /home/ubuntu/.bash_profile
+echo 'eval "$(rbenv init -)"' >> /home/ubuntu/.bashrc
+echo 'eval "$(rbenv init -)"' >> /home/ubuntu/.bash_profile
 exec $SHELL
 
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+git clone https://github.com/rbenv/ruby-build.git /home/ubuntu/.rbenv/plugins/ruby-build
+echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> /home/ubuntu/.bashrc
+echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> /home/ubuntu/.bash_profile
 exec $SHELL
 
-rbenv install 2.4.0
-rbenv global 2.4.0
-ruby -v
-gem install bundler
+sudo chown  -R ubuntu:ubuntu /home/ubuntu
 
-sudo  ln -s /home/ubuntu/.rbenv /root/.rbenv
-  # If you use bash  add rbenv to bash ( I use fish - for instructions go to rbenv website)
-  #echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> /root/.bash_profile
-  #echo 'eval "$(rbenv init -)"' >> /root/.bash_profile
-  #echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> /root/.bashrc
-  #echo 'eval "$(rbenv init -)"' >> /root/.bashrc
-sudo  chmod o+x "/root"
+sudo -H -u ubuntu  /bin/bash -l -c 'rbenv install 2.3.3'
+sudo -H -u ubuntu  /bin/bash -l -c 'rbenv global 2.3.3'
+sudo -H -u ubuntu  /bin/bash -l -c 'ruby -v'
+sudo -H -u ubuntu  /bin/bash -l -c 'gem install bundler'
+
+
 
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7
 sudo apt-get install -y apt-transport-https ca-certificates
@@ -129,7 +128,7 @@ sudo apt-get install -y nginx-extras passenger
 #  chsh -s /usr/bin/fish
 #exit
 
-sudo chsh -s /usr/bin/fish
+# sudo chsh -s /usr/bin/fish
 
 # sudo ln -s /root/.rbenv/ ~/
 # sudo nano /etc/passwd  # change ubuntu shelll to fish
