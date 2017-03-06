@@ -1,9 +1,11 @@
-# vagrant-debian-on-windows-with-rbenv
+# Vagrant: Ubuntu guest with rbenv and all libs required to compile most popular ruby gems.
+
 
 Read comments  especially in vagrant_config/ & Vagrantfile.
 
 This will work on any host machine  - Mac, Linux or Windows (winnfs is only for windows - just comment it out)
 
+Stuff needed to run on Windows host is commented out - it's just using NFS for storage sharing - much faster, thank buiilt-in stuff in VritualBox. Not needed on OSX or Linux
 
 ### Author
 Nick Gorbikoff (c) 2014
